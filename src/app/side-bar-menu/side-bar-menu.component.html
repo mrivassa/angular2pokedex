@@ -1,0 +1,24 @@
+<md-sidenav-container>
+  <md-sidenav #sidenav mode="side" opened="true">
+    <md-list>
+      <md-list-item>
+        <md-chip-list>
+          <md-chip *ngIf="previous" color="primary" selected="true" (click)="previousPokemonBatch()">Previous</md-chip>
+          <md-chip *ngIf="next" color="primary" selected="true" (click)="nextPokemonBatch()">Next</md-chip>
+        </md-chip-list>
+      </md-list-item>
+      <md-list-item *ngFor="let pokemon of pokemons">
+        <img class="pokemonImg" [src]='pokemon.image' />
+        <p class="pokemonName" (click)="select(pokemon)">{{pokemon.name}}</p>
+      </md-list-item>
+      <md-list-item>
+        <md-chip-list>
+          <md-chip *ngIf="previous" color="primary" selected="true" (click)="previousPokemonBatch()">Previous</md-chip>
+          <md-chip *ngIf="next" color="primary" selected="true" (click)="nextPokemonBatch()">Next</md-chip>
+        </md-chip-list>
+      </md-list-item>
+    </md-list>
+  </md-sidenav>
+  <app-main-content *ngIf="selectedPokemon" [pokemon]="selectedPokemon"></app-main-content>
+  <md-card class='choosePokemon' *ngIf="!selectedPokemon">Choose a pokemon from the list.</md-card>
+</md-sidenav-container>
